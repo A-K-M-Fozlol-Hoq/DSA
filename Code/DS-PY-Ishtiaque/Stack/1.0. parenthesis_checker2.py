@@ -1,4 +1,4 @@
-from _Stack import Stack
+from stack import Stack
 
 def parChecker(symbolString):
     s = Stack()
@@ -27,5 +27,5 @@ def matches(open,close):
     return opens.index(open) == closers.index(close)
 
 
-print(parChecker('{({([][])}())}'))
-print(parChecker('[{()]'))
+print(parChecker('{({([][])}())}')) #True
+print(parChecker('[{()]')) #False

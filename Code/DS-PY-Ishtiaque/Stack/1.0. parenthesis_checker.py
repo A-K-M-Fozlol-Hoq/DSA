@@ -1,4 +1,4 @@
-from _Stack import Stack
+from stack import Stack
 
 def parentheseis_checker(str):
     stack = Stack()
