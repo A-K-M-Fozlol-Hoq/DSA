@@ -1,29 +1,31 @@
 from stack import Stack
 
-def postfixEval(string):
-    stack = Stack()
-    for item in string:
-        if item in '0123456789+-*/':
-            if item in ["+","-","*","/"]:
-                num1= int(stack.pop())
-                num2= int(stack.pop())
-                result = domath(item, num1, num2)
-                stack.push(result)
-            else:
-                stack.push(item)
-    return stack.pop()
 
-def domath(operator,num1,num2):
-    if(operator == '+'):
-        return num2+num1
-    elif(operator == '-'):
-        return num2-num1
-    elif (operator == '*'):
-        return num2*num1
+def postfixEval(postfixExpr):
+    operandStack = Stack()
+    tokenList = postfixExpr.split()
+
+    for token in tokenList:
+        if token in "+-*/":
+            operand2 = operandStack.pop()
+            operand1 = operandStack.pop()
+            result = doMath(token, operand1, operand2)
+            operandStack.push(result)
+        else:
+            operandStack.push(int(token))
+    return operandStack.pop()
+
+def doMath(op, op1, op2):
+    if op == "*":
+        return op1 * op2
+    elif op == "/":
+        return op1 / op2
+    elif op == "+":
+        return op1 + op2
     else:
-        return (num2/num1)
+        return op1 - op2
 
-print(postfixEval('23+45+*'))
-print(postfixEval('23+4+'))
-print(postfixEval('34*25*+'))
-print(postfixEval('34*2 j 5*+ df'))
+print(postfixEval('7 8 + 3 2 + /'))
+print(postfixEval('2 3 + 4 5 + *'))
+print(postfixEval('2 3 + 4 +'))
+print(postfixEval('20 3 + 4 5 + *'))
