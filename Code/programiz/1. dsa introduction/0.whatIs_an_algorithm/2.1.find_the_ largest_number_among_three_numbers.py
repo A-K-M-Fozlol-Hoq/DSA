@@ -1,5 +1,4 @@
 # This program takes three numbers and finds the largest one.
-
 num1, num2, num3 = None, None, None
 
 try:
