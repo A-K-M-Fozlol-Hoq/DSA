@@ -30,6 +30,35 @@ class LinkedList:
                     break
                 print('=>', end=' ')
                 current_node = current_node.next
+    def insert_head(self, new_node):
+        temp_node = self.head
+        self.head = new_node
+        self.head.next = temp_node
+        del temp_node
+    def list_length(self):
+        current_node = self.head
+        length = 0
+        while current_node is not None:
+            length += 1
+            current_node = current_node.next
+        return length
+    
+    def insert_at(self, new_node, position):
+        if position>self.list_length() or position<0:
+            print("Invalid position")
+            return
+        if position is 0:
+            self.insert_head(new_node)
+        current_node = self.head
+        current_node_position = 0
+        while True:
+            if position == current_node_position:
+                previous_node.next = new_node
+                new_node.next = current_node
+                break
+            previous_node = current_node
+            current_node = current_node.next
+            current_node_position += 1
 
 
 
@@ -43,3 +72,9 @@ l_list.insert(second_node)
 l_list.insert(third_node)
 print("this is your linked list: ")
 l_list.print_list()
+print('\n',l_list.list_length(),' this is the current length of the linked list')
+fourth_node = Node('start')
+l_list.insert_head(fourth_node)
+print("printing after inserthead")
+l_list.print_list()
+print('\n',l_list.list_length(),' this is the current length of the linked list')
