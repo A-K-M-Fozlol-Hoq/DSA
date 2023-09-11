@@ -59,6 +59,13 @@ class LinkedList:
             previous_node = current_node
             current_node = current_node.next
             current_node_position += 1
+    def delet_end(self):
+        last_node = self.head
+        while last_node.next is not None:
+            previous_node= last_node
+            last_node = last_node.next
+        previous_node.next = None
+            
 
 
 
@@ -78,3 +85,9 @@ l_list.insert_head(fourth_node)
 print("printing after inserthead")
 l_list.print_list()
 print('\n',l_list.list_length(),' this is the current length of the linked list')
+fifth_node= Node("added")
+l_list.insert_at(fifth_node, 2)
+l_list.print_list()
+l_list.delet_end()
+print("after delete end")
+l_list.print_list()
