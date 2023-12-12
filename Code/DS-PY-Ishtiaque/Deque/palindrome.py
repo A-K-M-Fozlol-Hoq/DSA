@@ -10,7 +10,7 @@ while queue.size()>1:
     reer = queue.removeRear()
     if front != reer:
         is_palindrome = False
-        
+        break  
 if is_palindrome:
     print("Entered string is palindrome")
 else:
